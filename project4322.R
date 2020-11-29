@@ -46,13 +46,3 @@ traindata <- predict(pre, traindata)    # apply the transformation on training s
 testdata <- predict(pre, testdata)    # apply the transformation on testing set
 summary(traindata)
 summary(testdata)
-
-
-attach(traindata)
-library(nnet)
-net = nnet(Activity~Time+Acceleration.front+Acceleration.vert+Acceleration.lat+Antenna+RSSI+Phase+Frequency,data=traindata,size=5,linear.output=TRUE)
-plot(net)
-pred_nnet<-predict(net,traindata,type = "class")
-(mtab<-table(traindata$Activity,pred_nnet))
-
-
